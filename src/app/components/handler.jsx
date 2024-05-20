@@ -9,7 +9,7 @@ const Handler = ({ data }) => {
     
   const newSet = [...new Set(data.products.map(({ category }) => category))];
   return (
-    <main className="w-[94%] mx-auto mt-[60px]  max-w-[1200px]">
+    <main className="w-[90%] mx-auto mt-[60px]  max-w-[1200px]">
       {newSet.map((categoryFiltered) => {
         return (
           <div key={categoryFiltered} className="">

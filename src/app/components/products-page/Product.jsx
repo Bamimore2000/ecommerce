@@ -41,19 +41,10 @@ const Product = ({ data }) => {
   const pictures = images;
   console.log(pictures);
   return (
-    <article className="bg-black ">
-      <div className="product-wrapper flex flex-col">
-        <div className="image-wrapper w-full bg-white grid place-items-center  h-[50vh] ">
-          <div className="image max-h-full h-[80%] grid place-items-center w-auto mx-auto">
-            <img
-              className="max-h-[100%] bg-white w-[auto] h-full"
-              src={pictures[imageIndex]}
-            />
-          </div>
-        </div>
-        <div className="others relative bg-black pb-5 text-white">
-          <div className="others-wrapper w-[90%] max-w-[1200px] mx-auto">
-            <div className="image-displayer h-[100px] w-full  absolute inset-0  rounded-t-[20px] top-3  gap-2 flex justify-between -mt-7 bg-black p-5">
+    <article className=" ">
+      <div className="product-wrapper md:h-[100vh] flex flex-col mx-auto md:grid grid-cols-2">
+        <div className="image-wrapper w-full relative bg-black grid place-items-center md:h-[60vh]   h-[50vh] ">
+        <div className="hidden md:inset md:h-max-content md:flex md:absolute md:-right-0 md:translate-x-[50%] md:z-10 md:flex-col md:gap-2 md:rounded-[30px] md:bg-customColor md:p-5">
               {pictures.map((data, index) => {
                 return (
                   <div
@@ -71,7 +62,34 @@ const Product = ({ data }) => {
                 );
               })}
             </div>
-            <div className="other-details flex justify-between items-center mt-[80px] ">
+          <div className="image max-w-[3000px]  h-[80%] grid place-items-center w-auto mx-auto">
+            <img
+              className="max-h-[300px] w-[100%] md:max-w-[400px] md:max-h-[400px] object-contain h-full"
+              src={pictures[imageIndex]}
+            />
+          </div>
+        </div>
+        <div className="others relative    pb-5">
+          <div className="others-wrapper w-[90%] md:w-[70%] max-w-[1200px] md:card md:bg-white md:p-10 md:mt-3 mx-auto">
+            <div className="image-displayer h-[100px] absolute inset-0 rounded-t-[20px] top-3 gap-2 flex justify-between -mt-7 p-5 md:hidden">
+              {pictures.map((data, index) => {
+                return (
+                  <div
+                  key={index}
+                    onClick={() => setImageIndex(index)}
+                    className="one-display rounded-full"
+                  >
+                    <img
+                      className="h-[70px] w-[70px]  rounded-full max-h-[50vh]rounded-full"
+                      src={pictures[index]}
+                      alt=""
+                    />
+                    <div className="indicator"></div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="other-details flex justify-between md:mt-0 items-center mt-[80px] ">
               <div className="zign-polo-rating mt-2">
                 <div className="zign">{category.toUpperCase()}</div>
                 <div className="polo">{title}</div>
@@ -101,7 +119,7 @@ const Product = ({ data }) => {
             <div className="">
                 {stock} items remaining
             </div>
-            <div className="add-to-cart bg-black card mt-2 sticky flex gap-2 items-center bottom-0">
+            <div className="add-to-cart card mt-2 sticky flex gap-2 items-center bottom-0">
                 <div className="call p-4 border border-blue-500 border-solid"><FaPhoneAlt /></div>
               {findId(id)?.number > 0 ? (
                 <div className="increase-decrease w-full flex justify-between md:w-[25%] items-center">
@@ -111,7 +129,7 @@ const Product = ({ data }) => {
                 >
                   -
                 </div>
-                <div className="number text-white">{findCart(id)}</div>
+                <div className="number text-blue-500">{findCart(id)}</div>
                 <div
                   onClick={() => increaseItem(id)}
                   className="plus cursor-pointer hover:bg-blue-600  bg-blue-500 rounded-md px-4 py-2 items-center text-white"

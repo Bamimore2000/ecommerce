@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="w-full h-[200px] bg-black text-white">Footer</div>
+    <div className="w-full h-[200px]">Footer</div>
   )
 }
 export default Footer
