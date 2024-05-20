@@ -44,7 +44,7 @@ const Product = ({ data }) => {
     <article className=" ">
       <div className="product-wrapper md:h-[100vh] flex flex-col mx-auto md:grid grid-cols-2">
         <div className="image-wrapper w-full relative bg-black grid place-items-center md:h-[60vh]   h-[50vh] ">
-        <div className="hidden md:inset md:h-max-content md:flex md:absolute md:-right-0 md:translate-x-[50%] md:z-10 md:flex-col md:gap-2 md:rounded-[30px] md:bg-customColor md:p-5">
+        <div className="hidden images-large md:inset md:h-max-content md:flex md:absolute md:-right-0 md:translate-x-[50%] md:z-10 md:flex-col md:gap-2 md:rounded-[30px] md:bg-customColor md:p-5">
               {pictures.map((data, index) => {
                 return (
                   <div
@@ -62,7 +62,7 @@ const Product = ({ data }) => {
                 );
               })}
             </div>
-          <div className="image max-w-[3000px]  h-[80%] grid place-items-center w-auto mx-auto">
+          <div className="image-display max-w-[3000px]  h-[80%] grid place-items-center w-auto mx-auto">
             <img
               className="max-h-[300px] w-[100%] md:max-w-[400px] md:max-h-[400px] object-contain h-full"
               src={pictures[imageIndex]}

@@ -5,6 +5,8 @@ import Modal from "../components/modal/Modal";
 import { MdDeleteOutline } from "react-icons/md";
 import Link from "next/link";
 import { FaCartPlus } from "react-icons/fa";
+import { FaPhoneAlt } from "react-icons/fa";
+
 
 
 const Cart = ({}) => {
@@ -84,7 +86,7 @@ const [openModal, setOpenModal] = useState(false)
                 </div>
                 <div className="md:hidden sticky card bg-white p-3 card  bottom-0 mt-2 w-[90%] max-w-[1200px] mx-auto flex justify-between items-center">
                   <div className="basis-[15%] rounded-[5px] py-2 px-4 p-1 border-[1px] border-solid border-blue-500">
-                    Call
+                  <FaPhoneAlt color="blue"/>
                   </div>
                   <button className="w-full basis-[80%] text-white rounded-[5px] hover:bg-blue-600 py-2 px-4 bg-blue-500">
                     CHECKOUT ${Math.ceil(total)}
