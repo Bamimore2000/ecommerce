@@ -1,11 +1,13 @@
 "use client";
 import { useContext } from "react";
 import ProductContext from "../contexts/product-context";
+import Link from "next/link";
 
 const Handler = ({ data }) => {
-    const {cart, setItem, findId} = useContext(ProductContext)
+    const {cart, setItem, findId, calculateOriginalPrice} = useContext(ProductContext) 
+    console.log(data);
     
-  const newSet = [...new Set(data.map(({ category }) => category))];
+  const newSet = [...new Set(data.products.map(({ category }) => category))];
   return (
     <main className="w-[94%] mx-auto mt-[60px]  max-w-[1200px]">
       {newSet.map((categoryFiltered) => {
@@ -15,29 +17,33 @@ const Handler = ({ data }) => {
               {categoryFiltered.toUpperCase()}
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 xl:grid-cols-4 gap-4">
-              {data
+              {data.products
                 .filter((datum) => datum.category === categoryFiltered)
                 .map((product) => {
-                    const { description, title, id, image, price } = product
+                    const {title, id, images, price, thumbnail, brand, discountPercentage } = product;
+                    const prevPrice = calculateOriginalPrice(discountPercentage, price);
+                    console.log(prevPrice);
                   return (
-                    <article key={id} className="flex cursor-pointer rounded-lg max-h-15 card flex-col space-y-2 bg-white p-2 justify-between items-center">
-                      <div className="w-2/4 p-2 h-auto">
-                        <img className="w-full h-full" src={image} alt={id} />
+                    <Link href={`/products/${id}`} key={id} className="flex cursor-pointer rounded-lg max-h-15 card flex-col space-y-2 bg-white p-2 justify-between items-center">
+                      
+                      <div className="w-full max-h-[280px] p-2 h-auto relative">
+                        <div className="prev absolute text-red-400 p-2 bg-red-100 -top-1 right-0">{discountPercentage}%</div>
+                        <img className="w-full h-full" src={thumbnail} alt={id} />
                       </div>
                       <div className="others w-full">
                         <div className="font-bold">{title}</div>
                         <div className="flex justify-between items-center">
-                          <div className="font-semibold">${price}</div>
+                          <div className="flex flex-col"><span className="font-semibold">${price}</span> <span className="line-through">${prevPrice}</span></div>
                           <div>
                             <button onClick={()=> {
                                 setItem(product, id)
                             }} className="bg-blue-500 card text-white px-2 py-1">
-                              Add to cart {findId(id)?.number > 0 && `(${findId(id).number})`}
+                              {brand}
                             </button>
                           </div>
                         </div>
                       </div>
-                    </article>
+                    </Link>
                   );
                 })}
             </div>

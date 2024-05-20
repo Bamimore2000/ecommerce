@@ -9,7 +9,7 @@ import Link from "next/link"
 const NavBar = () => {
     const {cart} = useContext(ProductContext)
   return (
-    <nav className="h-[60px] z-50 bg-black  text-white w-full flex items-center fixed  top-0">
+    <nav className="h-[60px] z-50 bg-black shadow-lg  text-white w-full flex items-center fixed  top-0">
         <div className="w-[94%] mx-auto flex justify-between items-center my-auto  max-w-[1200px]">
             <Link href='/' className="text-3xl text-white font-bold" >SOGZY STORE</Link>
             <Link href='/cart' className="cart relative">

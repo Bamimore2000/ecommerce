@@ -33,12 +33,12 @@ const [openModal, setOpenModal] = useState(false)
                     Cart (4)
                   </h5>
                   {
-                    cart?.map(({title, description, number, image, price, id}) =>{
+                    cart?.map(({title, description, number, image, price, id, thumbnail}) =>{
                         return number > 0 && (
                             <div key={description} className="bg-white border-t border-t-black-300 pt-3">
                         <div className="upper basis-[30%] flex gap-[20px]  items-center">
                           <div className="image h-24 w-auto">
-                            <img className="h-full w-auto min-w-[80px]" src={image} alt="yes" />
+                            <img className="h-full w-auto min-w-[80px]" src={thumbnail} alt="yes" />
                           </div>
                           <div className="passport-price flex flex-col md:flex-row md:basis-[80%] md:justify-between">
                             <div className="text-[18px]">

@@ -18,6 +18,22 @@ export const ContextProvider = ({ children }) => {
     }
   }, []);
 
+  function calculateOriginalPrice(discountRate, currentPrice) {
+    if (discountRate <= 0 || discountRate >= 100 || currentPrice <= 0) {
+      throw new Error("Invalid discount rate or current price.");
+    }
+    
+    // Convert the discount rate from percentage to a decimal
+    const discountDecimal = discountRate / 100;
+    
+    // Calculate the original price
+    const originalPrice = currentPrice / (1 - discountDecimal);
+    
+    // Format the original price to two decimal places
+    return originalPrice.toFixed(2);
+  }
+  
+
   const reduceItem = (id) => {
     let updatedCart = cart.map((item) =>
       item.id === id && item.number > 0 ? { ...item, number: item.number - 1 } : item
@@ -79,7 +95,7 @@ export const ContextProvider = ({ children }) => {
 
   // Return the context provider with value
   return (
-    <ProductContext.Provider value={{ cart, setItem, findId, total, removeItem, increaseItem, reduceItem }}>
+    <ProductContext.Provider value={{ cart, setItem, findId, total, removeItem, increaseItem, calculateOriginalPrice, reduceItem }}>
       {children}
     </ProductContext.Provider>
   );
