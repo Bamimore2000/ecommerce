@@ -55,6 +55,7 @@ const Product = ({ data }) => {
               {pictures.map((data, index) => {
                 return (
                   <div
+                  key={index}
                     onClick={() => setImageIndex(index)}
                     className="one-display rounded-full"
                   >
