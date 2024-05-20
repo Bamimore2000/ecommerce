@@ -82,7 +82,7 @@ const [openModal, setOpenModal] = useState(false)
                     </div>
                   </div>
                 </div>
-                <div className="md:hidden md:sticky bg-white p-3 card  bottom-0 mt-2 w-[94%] max-w-[1200px] mx-auto flex justify-between items-center">
+                <div className="md:hidden sticky card bg-white p-3 card  bottom-0 mt-2 w-[94%] max-w-[1200px] mx-auto flex justify-between items-center">
                   <div className="basis-[15%] rounded-[5px] py-2 px-4 p-1 border-[1px] border-solid border-blue-500">
                     Call
                   </div>

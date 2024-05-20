@@ -5,6 +5,8 @@ import { IoStar } from "react-icons/io5";
 
 import { FaHeart } from "react-icons/fa";
 import { IoStarHalf } from "react-icons/io5";
+import { FaPhoneAlt } from "react-icons/fa";
+
 
 import ProductContext from "@/app/contexts/product-context";
 import { FaCartPlus } from "react-icons/fa";
@@ -39,10 +41,10 @@ const Product = ({ data }) => {
   const pictures = images;
   console.log(pictures);
   return (
-    <article className="bg-black min-h-[100vh]">
+    <article className="bg-black ">
       <div className="product-wrapper flex flex-col">
-        <div className="image-wrapper w-full  h-[50vh] ">
-          <div className="image max-h-full h-full grid place-items-center w-[100%] mx-auto">
+        <div className="image-wrapper w-full bg-white grid place-items-center  h-[50vh] ">
+          <div className="image max-h-full h-[80%] grid place-items-center w-auto mx-auto">
             <img
               className="max-h-[100%] bg-white w-[auto] h-full"
               src={pictures[imageIndex]}
@@ -50,7 +52,7 @@ const Product = ({ data }) => {
           </div>
         </div>
         <div className="others relative bg-black pb-5 text-white">
-          <div className="others-wrapper w-[94%] max-w-[1200px] mx-auto">
+          <div className="others-wrapper w-[90%] max-w-[1200px] mx-auto">
             <div className="image-displayer h-[100px] w-full  absolute inset-0  rounded-t-[20px] top-3  gap-2 flex justify-between -mt-7 bg-black p-5">
               {pictures.map((data, index) => {
                 return (
@@ -60,7 +62,7 @@ const Product = ({ data }) => {
                     className="one-display rounded-full"
                   >
                     <img
-                      className="h-[70px] w-[70px] rounded-full max-h-[50vh]rounded-full"
+                      className="h-[70px] w-[70px]  rounded-full max-h-[50vh]rounded-full"
                       src={pictures[index]}
                       alt=""
                     />
@@ -87,22 +89,22 @@ const Product = ({ data }) => {
             </div>
             <div className="like-others">
               <div className="like flex gap-1">
-              
               </div>
               <div className="description my-4">
               <div className="header">
-                <h3>Description</h3>
+                <h3 className="font-bold">Description</h3>
                 <div className="arrow"></div>
               </div>
               <div className="text-description ">{description}</div>
             </div>
             </div>
-            <div className="left inline-block w-[150px]">
+            <div className="">
                 {stock} items remaining
             </div>
-            <div className="add-to-cart">
+            <div className="add-to-cart bg-black card mt-2 sticky flex gap-2 items-center bottom-0">
+                <div className="call p-4 border border-blue-500 border-solid"><FaPhoneAlt /></div>
               {findId(id)?.number > 0 ? (
-                <div className="increase-decrease flex justify-between w-[50%] md:w-[25%] items-center">
+                <div className="increase-decrease w-full flex justify-between md:w-[25%] items-center">
                 <div
                   onClick={() => reduceItem(id)}
                   className="plus cursor-pointer  hover:bg-blue-600 bg-blue-500 rounded-md px-4 py-2 items-center text-white"

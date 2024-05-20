@@ -1,6 +1,7 @@
 "use client"
 
 import { Inter } from "next/font/google";
+import Footer from "./components/footer/Footer";
 import NavBar from "./components/navbar/NavBar";
 import { ContextProvider } from "./contexts/product-context";
 import "./globals.css";
@@ -20,7 +21,7 @@ export default function RootLayout({ children }) {
         <NavBar></NavBar>
         {children}
         </ContextProvider>
-        
+        <Footer></Footer>
         </body>
     </html>
   );
