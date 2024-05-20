@@ -119,8 +119,8 @@ const Product = ({ data }) => {
             <div className="">
                 {stock} items remaining
             </div>
-            <div className="add-to-cart card mt-2 sticky flex gap-2 items-center bottom-0">
-                <div className="call p-4 border border-blue-500 border-solid"><FaPhoneAlt /></div>
+            <div className="add-to-cart w-full p-3 bg-white card mt-2 sticky flex gap-2 items-center bottom-0">
+                <div className="call p-4 border border-blue-500 border-solid"><FaPhoneAlt color="blue"/></div>
               {findId(id)?.number > 0 ? (
                 <div className="increase-decrease w-full flex justify-between md:w-[25%] items-center">
                 <div
@@ -141,7 +141,7 @@ const Product = ({ data }) => {
                 <button onClick={()=>{
                     setItem(data, id)
                 }} className="font-bold relative hover:bg-blue-600 my-2 bg-blue-500 px-[6px] text-white flex justify-center card py-[12px] h-[100%] w-full">
-                  <FaCartPlus className="absolute left-[6px]" size={30} />
+                  <FaCartPlus className="absolute  left-[6px]"  size={30} />
                   <div>Add to cart</div>
                 </button>
                 
