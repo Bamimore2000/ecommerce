@@ -8,7 +8,8 @@ export const ContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
-  // Load cart from local storage on component mount
+  if(typeof window !== "undefined"  && typeof localStorage !== 'undefined'){
+    // Load cart from local storage on component mount
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
@@ -76,6 +77,8 @@ export const ContextProvider = ({ children }) => {
     </ProductContext.Provider>
   );
 };
+  }
 
+  
 // Export the context
 export default ProductContext;
