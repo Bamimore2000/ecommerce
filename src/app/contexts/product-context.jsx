@@ -8,38 +8,45 @@ export const ContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
-  if(typeof window !== "undefined"  && typeof localStorage !== 'undefined'){
-    // Load cart from local storage on component mount
+  // Load cart from local storage on component mount
   useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
+    if (typeof window !== "undefined" && typeof localStorage !== 'undefined') {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        setCart(JSON.parse(storedCart));
+      }
     }
   }, []);
 
   const reduceItem = (id) => {
-    let updatedCart = cart.map((item) => 
+    let updatedCart = cart.map((item) =>
       item.id === id && item.number > 0 ? { ...item, number: item.number - 1 } : item
     ).filter(item => item.number > 0);
 
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    if (typeof window !== "undefined" && typeof localStorage !== 'undefined') {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   };
 
   const increaseItem = (id) => {
-    let updatedCart = cart.map((item) => 
+    let updatedCart = cart.map((item) =>
       item.id === id ? { ...item, number: item.number + 1 } : item
     );
 
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    if (typeof window !== "undefined" && typeof localStorage !== 'undefined') {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   };
 
   const removeItem = (id) => {
     let updatedCart = cart.filter((item) => item.id !== id);
 
     setCart(updatedCart);
-    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    if (typeof window !== "undefined" && typeof localStorage !== 'undefined') {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
   };
 
   useEffect(() => {
@@ -56,7 +63,7 @@ export const ContextProvider = ({ children }) => {
 
   // Function to set an item in the cart
   const setItem = (data, id) => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== "undefined" && typeof localStorage !== 'undefined') {
       let updatedCart;
       if (!findId(id)) {
         updatedCart = [...cart, { ...data, number: 1 }];
@@ -77,8 +84,6 @@ export const ContextProvider = ({ children }) => {
     </ProductContext.Provider>
   );
 };
-  }
 
-  
 // Export the context
 export default ProductContext;
