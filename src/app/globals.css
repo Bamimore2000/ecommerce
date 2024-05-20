@@ -28,3 +28,7 @@ body{
   box-sizing: border-box;
   
 }
+.card{
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .05);
+  border-radius: 4px;
+}
