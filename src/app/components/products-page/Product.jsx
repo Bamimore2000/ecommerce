@@ -119,10 +119,10 @@ const Product = ({ data }) => {
             <div className="">
                 {stock} items remaining
             </div>
-            <div className="add-to-cart w-full p-3 bg-white card mt-2 sticky flex gap-2 items-center bottom-0">
-                <div className="call p-4 border border-blue-500 border-solid"><FaPhoneAlt color="blue"/></div>
+            <div className="add-to-cart w-full bg-white card mt-2 sticky flex gap-2 items-center bottom-0">
+                <div className="call p-4 border border-blue-500 border-solid"><FaPhoneAlt color="rgb(59, 130, 246)"/></div>
               {findId(id)?.number > 0 ? (
-                <div className="increase-decrease w-full flex justify-between md:w-[25%] items-center">
+                <div className="increase-decrease w-full flex justify-between md:w-[100%] items-center">
                 <div
                   onClick={() => reduceItem(id)}
                   className="plus cursor-pointer  hover:bg-blue-600 bg-blue-500 rounded-md px-4 py-2 items-center text-white"

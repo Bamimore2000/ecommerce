@@ -19,6 +19,7 @@ const [openModal, setOpenModal] = useState(false)
         {
             cart.length > 0 ? (
                 <div className="cart-continer">
+                  <Modal open={openModal} setOpen={setOpenModal} setAction={() => removeItem(id)}/>
                 <div className="mobile block md:hidden">
                   <h4 className="w-[90%] max-w-[1200px] mx-auto">CART SUMMARY</h4>
                   <div className="cart-subtotal card flex justify-between bg-white p-2 items-center">
@@ -49,12 +50,12 @@ const [openModal, setOpenModal] = useState(false)
                             <div className="text-[20px] font-normal">${price}</div>
                           </div>
                         </div>
-                        <div className="lower flex p-3 justify-between items-center">
-                        <Modal open={openModal} setOpen={setOpenModal} setAction={() => removeItem(id)}/>
+                        <div className="lower flex py-3 justify-between items-center">
+                        
                           <div onClick={()=> {
                             setOpenModal(true)
                             console.log(openModal);
-                            }} className="remove hover:bg-blue-400 gap-1 py-1 flex items-center px-2 cursor-pointer text-blue-500">
+                            }} className="remove hover:bg-blue-400 gap-1 py-1 flex items-center cursor-pointer text-blue-500">
                             <MdDeleteOutline size={20} /><span>REMOVE</span>
                           </div>
                           <div className="increase-decrease flex justify-between w-[50%] md:w-[25%] items-center">
@@ -86,7 +87,7 @@ const [openModal, setOpenModal] = useState(false)
                 </div>
                 <div className="md:hidden sticky card bg-white p-3 card  bottom-0 mt-2 w-[90%] max-w-[1200px] mx-auto flex justify-between items-center">
                   <div className="basis-[15%] rounded-[5px] py-2 px-4 p-1 border-[1px] border-solid border-blue-500">
-                  <FaPhoneAlt color="blue"/>
+                  <FaPhoneAlt color="rgb(59, 130, 246)"/>
                   </div>
                   <button className="w-full basis-[80%] text-white rounded-[5px] hover:bg-blue-600 py-2 px-4 bg-blue-500">
                     CHECKOUT ${Math.ceil(total)}

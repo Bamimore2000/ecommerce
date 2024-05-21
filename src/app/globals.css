@@ -38,9 +38,7 @@ body{
   text-decoration: line-through;
 }
 
-@media (orientation: landscape){
-
-
+@media (orientation: landscape) and (max-height: 500px){
   .images-large{
     padding: 1rem;
   }
@@ -57,6 +55,7 @@ body{
   .others-wrapper{
     padding: 1rem !important;
   }
+  
 }
 
 /* ipad */
@@ -73,4 +72,87 @@ body{
     height: 34px;
     width: 34px;
 }
+
+.image-wrapper{
+  position: sticky;
+}
  }
+
+ 
+
+ @media (min-width: 768px) and (orientation: portrait){
+  .images-large img{
+    height: 30px !important;
+    width: 30px !important;
+}
+.others-wrapper{
+  padding: 0.5rem !important;
+}
+
+
+
+.image-display img{
+  max-height: 350px !important;
+}
+ }
+
+ @media (min-width: 825px) and (orientation: landscape){
+  .images-large img{
+    height: 34px !important;
+    width: 34px !important;
+}
+.others-wrapper{
+  padding: 0.5rem !important;
+}
+
+ }
+
+ @media (min-width: 600px) and (orientation: landscape) and (max-height: 500px){
+  .main-display{
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+  .product-card{
+    font-size: 12px;
+  }
+  .brand{
+    padding: 2px !important;
+  }
+  .card-image{
+    height: 155px;
+    width: 175px;
+  }
+ }
+
+ @media (min-width: 1200px){
+  .images-large img{
+    height: 40px !important;
+    width: 40px !important;
+}
+
+.image-display img{
+  height: 400px !important;
+}
+.others-wrapper{
+  padding: 2.5rem !important;
+}
+ }
+
+ /* @media (orientation: landscape){
+    .main-display{
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    }
+    .product-card{
+      font-size: 12px;
+    }
+    .brand{
+      padding: 2px !important;
+    }
+    .card-image{
+      height: 155px;
+      width: 175px;
+    }
+ } */
+
+
+
+ 

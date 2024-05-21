@@ -3,7 +3,7 @@ import { FaTimes } from "react-icons/fa";
 
 const Modal = ({ open, setOpen, setAction}) => {
 
-  return open && <main onClick={ ()=> setOpen(false)} className="fixed inset-0 z-9999 bg-black/30 grid place-items-center">
+  return open && <main style={{zIndex: 100}} onClick={ ()=> setOpen(false)} className="fixed inset-0 index-100 bg-black/30 grid place-items-center">
   <article onClick={(e)=> e.stopPropagation()} className="modal flex flex-col justify-between card max-w-[90%] md:min-w-[576px] md:max-w-[576px] max-h-[80vh] bg-white text-black px-5 py-5 min-h-[180px] mx-auto">
       <div  className="header flex justify-between">
         <div className="message text-lg">Remove from cart</div>
