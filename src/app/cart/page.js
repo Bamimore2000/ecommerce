@@ -19,7 +19,7 @@ const [openModal, setOpenModal] = useState(false)
         {
             cart.length > 0 ? (
                 <div className="cart-continer">
-                  <Modal open={openModal} setOpen={setOpenModal} setAction={() => removeItem(id)}/>
+                  
                 <div className="mobile block md:hidden">
                   <h4 className="w-[90%] max-w-[1200px] mx-auto">CART SUMMARY</h4>
                   <div className="cart-subtotal card flex justify-between bg-white p-2 items-center">
@@ -39,6 +39,7 @@ const [openModal, setOpenModal] = useState(false)
                     cart?.map(({title, description, number, image, price, id, thumbnail}) =>{
                         return number > 0 && (
                             <div key={description} className="bg-white border-t border-t-black-300 pt-3">
+                              <Modal open={openModal} setOpen={setOpenModal} setAction={() => removeItem(id)}/>
                         <div className="upper basis-[30%] flex gap-[20px]  items-center">
                           <div className="image h-24 w-auto">
                             <img className="h-full w-auto max-w-[80px] min-w-[80px]" src={thumbnail} alt="yes" />
