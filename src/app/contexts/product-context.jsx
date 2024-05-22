@@ -7,6 +7,13 @@ const ProductContext = createContext(null);
 export const ContextProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
+  const [message, setMessage] = useState("");
+  const [showToast, setShowToast] = useState(false);
+  const [type, setType] = useState("");
+
+  const findId = (id) => {
+    return cart.find((item) => item.id === id);
+  };
 
   // Load cart from local storage on component mount
   useEffect(() => {
@@ -33,8 +40,43 @@ export const ContextProvider = ({ children }) => {
     return originalPrice.toFixed(2);
   }
   
+  const handleAdd = (id) => {
+    // initial add
+    setMessage("Item added succesfully");
+    setType("add");
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 1000);
+  };
+
+  const handleUpdate = (id) => {
+    // increase or decrease but not remove and initial add
+    setMessage("Item updated succesfully");
+    setType("update");
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 1000);
+  };
+
+  const handleRemoveFromCart = (id) => {
+    // removing from cart
+    setMessage("Item removed succesfully");
+    setType("remove");
+    setShowToast(true);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 1000);
+  };
 
   const reduceItem = (id) => {
+    if (findId(id).number === 1){
+      handleRemoveFromCart(id);
+    }
+    else if (findId(id).number > 1){
+      handleUpdate(id)
+    }
     let updatedCart = cart.map((item) =>
       item.id === id && item.number > 0 ? { ...item, number: item.number - 1 } : item
     ).filter(item => item.number > 0);
@@ -46,9 +88,11 @@ export const ContextProvider = ({ children }) => {
   };
 
   const increaseItem = (id) => {
+    handleUpdate(id);
     let updatedCart = cart.map((item) =>
       item.id === id ? { ...item, number: item.number + 1 } : item
     );
+
 
     setCart(updatedCart);
     if (typeof window !== "undefined" && typeof localStorage !== 'undefined') {
@@ -57,6 +101,7 @@ export const ContextProvider = ({ children }) => {
   };
 
   const removeItem = (id) => {
+    handleRemoveFromCart(id)
     let updatedCart = cart.filter((item) => item.id !== id);
 
     setCart(updatedCart);
@@ -64,6 +109,12 @@ export const ContextProvider = ({ children }) => {
       localStorage.setItem("cart", JSON.stringify(updatedCart));
     }
   };
+
+  
+
+
+  // cannot be in the cart
+  
 
   useEffect(() => {
     const calculateTotal = () => {
@@ -73,9 +124,7 @@ export const ContextProvider = ({ children }) => {
   }, [cart]); // Recalculate total whenever cart changes
 
   // Function to check if an item is in the cart
-  const findId = (id) => {
-    return cart.find((item) => item.id === id);
-  };
+  
 
   // Function to set an item in the cart
   const setItem = (data, id) => {
@@ -95,7 +144,7 @@ export const ContextProvider = ({ children }) => {
 
   // Return the context provider with value
   return (
-    <ProductContext.Provider value={{ cart, setItem, findId, total, removeItem, increaseItem, calculateOriginalPrice, reduceItem }}>
+    <ProductContext.Provider value={{ cart, setItem, findId, total, removeItem, handleAdd, message,showToast, type, increaseItem, calculateOriginalPrice, reduceItem }}>
       {children}
     </ProductContext.Provider>
   );

@@ -24,25 +24,25 @@ const Handler = ({ data }) => {
                     const prevPrice = calculateOriginalPrice(discountPercentage, price);
                     console.log(prevPrice);
                   return (
-                    <Link href={`/products/${id}`} key={id} className="product-card flex cursor-pointer rounded-lg max-h-15 card flex-col space-y-2 bg-white p-2 justify-between items-center">
-                      <div className="w-full max-h-[280px] p-2 h-auto relative">
-                        <div className="prev absolute text-red-400 p-2 bg-red-100 -top-1 right-0">{discountPercentage}%</div>
-                        <img className="card-image w-full h-full" src={thumbnail} alt={id} />
-                      </div>
-                      <div className="others w-full">
-                        <div className="font-bold">{title}</div>
-                        <div className="flex justify-between items-center">
-                          <div className="flex flex-col"><span className="font-semibold">${price}</span> <span className="line-through">${prevPrice}</span></div>
-                          <div>
-                            <button onClick={()=> {
-                                setItem(product, id)
-                            }} className="bg-blue-500 card brand text-white px-2 py-1">
-                              {brand}
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
+                    <Link href={`/products/${id}`} key={id} className="product-card flex cursor-pointer rounded-lg card flex-col space-y-2 bg-white p-2 justify-between items-center">
+    <div className="aspect-w-1 aspect-h-1 w-full max-h-[280px] p-2 relative">
+        <div className="prev absolute text-red-400 p-2 bg-red-100 -top-1 right-0">{discountPercentage}%</div>
+        <img className="card-image object-cover w-full h-full" src={thumbnail} alt={id} />
+    </div>
+    <div className="others w-full">
+        <div className="font-bold">{title}</div>
+        <div className="flex justify-between items-center">
+            <div className="flex flex-col"><span className="font-semibold">${price}</span> <span className="line-through">${prevPrice}</span></div>
+            <div>
+                <button onClick={() => {
+                    setItem(product, id)
+                }} className="bg-blue-500 card brand text-white px-2 py-1">
+                    {brand}
+                </button>
+            </div>
+        </div>
+    </div>
+</Link>
                   );
                 })}
             </div>
