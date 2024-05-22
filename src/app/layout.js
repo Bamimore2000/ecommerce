@@ -1,10 +1,12 @@
 "use client"
 
 import { Inter } from "next/font/google";
+import { Suspense } from "react";
 import Footer from "./components/footer/Footer";
 import NavBar from "./components/navbar/NavBar";
 import { ContextProvider } from "./contexts/product-context";
 import "./globals.css";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ContextProvider>
         <NavBar></NavBar>
+        <Suspense fallback={<Loading/>}>
         {children}
+        </Suspense>
         </ContextProvider>
         <Footer></Footer>
         </body>

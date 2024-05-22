@@ -58,6 +58,14 @@ body{
   
 }
 
+.loader{
+  height: calc(100vh - 61px);
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  margin-top: 61px;
+}
+
 /* ipad */
 @media only screen
  and (min-device-width: 768px)
